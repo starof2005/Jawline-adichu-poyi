@@ -1,4 +1,4 @@
-*Jawline adich poyi... 🎯*
+Project name: Jawline adich poyi... 🎯
 
 Basic Details
 Team Name: ALEXANDREAN PHALANX
