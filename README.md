@@ -76,10 +76,10 @@ ECHO output → R1 = 2.2kΩ → node → R2 = 3.3kΩ → GND
 — This divides ~5V down to ~3.0–3.2V which is safe for ESP32 input.
 Alternatively use R1 = 1.8kΩ and R2 = 3.3kΩ (≈3.3V at node).
 
-![breadboard](pics/breadboard.jpg) connected each sensors with esp32 using this
-![wire](pics/wire.jpg) connected sensors in breadboard
-![MPU6050 gyro accelometre](pics/gyro.jpg)
-![HCSR04](pic/hc.jpg)
+![breadboard](pics/breadboard1.jpg) connected each sensors with esp32 using this
+![wire](pics/wire1.jpg) connected sensors in breadboard
+![MPU6050 gyro accelometre](pics/gyro1.jpg)
+![HCSR04](pic/hc1.jpg)
  
 Build Photos
 MPU6050 module (GND / VCC / SDA / SCL)
@@ -87,16 +87,18 @@ HC-SR04 ultrasonic sensor
 Resistors for voltage divider (2.2kΩ and 3.3kΩ) or a proper bidirectional level shifter
 Breadboard, jumper wires, USB cable, power supply (5V if using HC-SR04 at 5V)
 
-![running](pics/running.jpg) 
+![running](pics/running1.jpg) 
 
-![Final](pics/finalproject.jpg) 
-![Final](pics/finalproject1.jpg)
+![running](pics/runningg.jpg) 
+
+![Final](pics/finalproject11.jpg) 
+![Final](pics/finalproject111.jpg)
 Project Demo
 Video
-[explanation video](pics/finalvideo.mp4) Explain what the video demonstrates
+[explanation video](pics/finalvideo1.mp4) Explain what the video demonstrates
 
 Additional Demos
-[screenrecord](pics/screenrecord.mp4)
+[screenrecord](pics/screenrecord1.mp4)
 
 Team Contributions
 Sanjeev Santhosh – Arduino programming, Firebase integration, hardware setup.
