@@ -4,19 +4,24 @@ Basic Details
 Team Name: ALEXANDREAN PHALANX
 
 Team Members
+
 Team Lead: Sanjeev Santhosh – College of Engineering Kallooppara
 Member 2: Neya Sabu – College of Engineering Kallooppara
 
 Project Description
+
 Jawline Adich Poyi is an IoT-based system that tracks a cow’s chewing using an MPU6050 sensor on an ESP32 and detects nearby humans with an HC-SR04 ultrasonic sensor. The data is sent to Firebase and displayed on a fun, animated web dashboard that shows the cow’s mood, plays videos, and updates live chewing stats
 
 The Problem (that doesn't exist)
+
 Nobody hears what a cow says when we go near it… and nobody knows its mood while chewing.
 
 The Solution (that nobody asked for)
+
 We attached motion and distance sensors to the cow’s head, tracked chewing patterns, streamed data to Firebase, and made a fun website to announce the cow’s mood and play cheeky videos when you approach.
 
 Technical Details
+
 Technologies/Components Used
 For Software:
 Languages: C++ (Arduino), HTML, CSS, JavaScript
@@ -35,6 +40,7 @@ For Software:
 Installation
 git clone https://github.com/username/jawline-adich-poyi.git
 
+vercel-host link:  https://jawline-adichu-poyi-pekp.vercel.app/ 
 
 Run
 # Open index.html in your browser
