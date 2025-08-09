@@ -87,7 +87,7 @@ HC-SR04 ultrasonic sensor
 Resistors for voltage divider (2.2kΩ and 3.3kΩ) or a proper bidirectional level shifter
 Breadboard, jumper wires, USB cable, power supply (5V if using HC-SR04 at 5V)
 
-![running](vidss/running1.jpg) 
+![running](vids/running1.jpg) 
 
 ![running](vids/runningg.jpg) 
 
