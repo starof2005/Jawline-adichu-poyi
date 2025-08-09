@@ -1,225 +1,103 @@
-# 🐮 Jawline Adich Poyi – Cow Chewing Mood Detector
-
-*"Chew cheyyunna Mood Detector! – A fun mix of cows, mood tracking, Malayalam humor, and IoT."*
-
-## 📜 Overview
-
-**Jawline Adich Poyi** is an IoT + Web App project that detects a cow's "chewing activity" and "nearby human presence", then visualizes the cow's **mood** on a colorful, animated website with Malayalam-themed fun elements.
-
-The project consists of:
-
-1. **ESP32 + MPU6050 + Ultrasonic Sensor** – Detects chewing rate (via yaw movement) & human presence.
-2. **Firebase Realtime Database** – Stores live chewing count, yaw data, and motion detection status.
-3. **Web Dashboard** – Displays live mood changes, plays fun videos, reacts to human presence, and plots chewing stats.
-
----
-
-## 🛠 Hardware Requirements
-
-* **ESP32** (WiFi-enabled microcontroller)
-* **MPU6050** Accelerometer + Gyroscope
-* **HC-SR04** Ultrasonic Distance Sensor
-* Breadboard + Jumper wires
-* Stable WiFi connection
-
----
-
-## 📂 Project Structure
-
-```
-├── arduino/
-│   └── cow_mood_detector.ino   # ESP32 firmware code
-├── web/
-│   ├── index.html               # Frontend HTML
-│   ├── style.css                # Styling & animations
-│   ├── app.js                   # Firebase config & init
-│   ├── script.js                # Mood detection & chart logic
-│   └── vids/                    # Fun cow videos (happy, sad, neutral, dialogue)
-└── README.md                    # This file
-```
-
----
-
-## ⚙ Arduino (ESP32) Logic
-
-### **1. WiFi Setup**
-
-```cpp
-WiFi.begin(ssid, password);
-while (WiFi.status() != WL_CONNECTED) { ... }
-```
-
-* Connects to your WiFi network.
-* Required for Firebase data push.
-
-### **2. Firebase Initialization**
-
-```cpp
-config.host = FIREBASE_HOST;
-config.signer.tokens.legacy_token = FIREBASE_AUTH;
-Firebase.begin(&config, &auth);
-```
-
-* Connects ESP32 to your **Firebase Realtime Database**.
-* Sends chewing count, yaw angle, and motion detection flag.
-
-### **3. MPU6050 Reading**
-
-* Reads accelerometer & gyroscope data.
-* Extracts **yaw rate** to detect chewing.
-* Uses:
-
-```cpp
-Yaw_angle += (Yaw_rate * dt / 1000.0);
-Yaw_angle = map(Yaw_angle, -32768, 32767, 0, 360);
-```
-
-### **4. Ultrasonic Sensor**
-
-* Detects human presence in range **10–50 cm**. 
-* Sets `motion_detected = true` if a human is detected.
-
-### **5. Firebase Upload**
-
-Example upload:
-
-```cpp
-Firebase.setFloat(firebaseData, "/MPU6050/Count", count);
-Firebase.setBool(firebaseData, "/Ultrasonic/motion_detected", motion_detected);
-```
-
----
-
-## 🌐 Web Dashboard Logic
-
-### **1. Firebase Setup (`app.js`)**
-
-```javascript
-const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
-```
-
-* Uses Firebase v9 modular SDK.
-* Connects frontend to the same DB as ESP32.
-
-### **2. Live Mood Detection (`script.js`)**
-
-* Fetches `Count` & `RealTime` from DB every **10 seconds**.
-* Calculates **chews per minute**:
-
-```javascript
-const chewRate = (count - lastCount) / (time - lastTime);
-```
-
-* Mood thresholds:
-
-  * **Happy**: ≥ 0.5 chews/sec
-  * **Neutral**: ≥ 0.2 chews/sec
-  * **Sad**: otherwise
-* Updates:
-
-  * Mood status text
-  * Video (happy, neutral, sad)
-  * Chart.js chewing graph
-
-### **3. Human Detection Reaction**
-
-* Listens to `/Ultrasonic/motion_detected`.
-* If `true`, plays special **cow dialogue** video.
-* Cooldown: 5 seconds between detections.
-
-### **4. Animations**
-
-* **GSAP** animations on page load & scroll.
-* **Chart.js** for live graphing.
-* Hero section cow GIF wiggles infinitely.
-
----
-
-## 🎨 UI/UX Highlights
-
-* **Navbar** with smooth scroll.
-* **Hero Section** with animated cow GIF.
-* **Mood Section** with live status, video, and chew count.
-* **Reaction Section** triggered by human detection.
-* **Stats Section** with a live updating chewing chart.
-* **Gallery** of all moods.
-* Malayalam humor sprinkled throughout.
-
----
-
-## 🔌 Wiring Guide
-
-| ESP32 Pin | Component Pin | Description        |
-| --------- | ------------- | ------------------ |
-| 21 (SDA)  | MPU6050 SDA   | I2C Data Line      |
-| 22 (SCL)  | MPU6050 SCL   | I2C Clock Line     |
-| 33        | HC-SR04 TRIG  | Trigger Ultrasonic |
-| 32        | HC-SR04 ECHO  | Echo Ultrasonic    |
-| 3.3V      | VCC (both)    | Power Supply       |
-| GND       | GND (both)    | Ground             |
-
----
-
-## 🔥 Firebase Database Structure
-
-```
-{
-  "MPU6050": {
-    "Count": 12,
-    "RealTime": 1053.08398,
-    "Yaw": 181
-  },
-  "Ultrasonic": {
-    "motion_detected": false
-  }
-}
-```
-
----
-
-## 🚀 Deployment
-
-1. **Arduino Side**
-
-   * Install Arduino IDE
-   * Install:
-
-     * `FirebaseESP32` library
-     * `Wire.h` (built-in)
-   * Upload `.ino` to ESP32.
-
-2. **Firebase**
-
-   * Create project in Firebase Console.
-   * Enable **Realtime Database**.
-   * Set database rules to allow read/write (or secure as needed).
-   * Update credentials in `cow_mood_detector.ino` & `app.js`.
-
-3. **Frontend**
-
-   * Place `index.html`, `style.css`, `app.js`, `script.js` in hosting folder.
-   * Upload to:
-
-     * GitHub Pages
-     * Firebase Hosting
-     * Any static site host.
-
-
----
-
-## 📸 Screenshots / Demo
-
-*(Add GIFs and screenshots of mood changes & human detection reactions here)*
-
----
-
-## 🐄 Credits
-
-Created with ❤️ in Kerala.
-Mixing **Electronics + Web Dev + Malayalam humor** for fun and learning.
-
----
-
-If you want, I can also prepare a **GitHub-ready version with badges, images, and deploy instructions** so that it looks professional and attractive for your repo.
-Do you want me to do that?
+Jawline adich poyi... 🎯
+Basic Details
+Team Name: ALEXANDREAN PHALANX
+
+Team Members
+Team Lead: Sanjeev Santhosh – College of Engineering Kallooppara
+Member 2: Neya Sabu – College of Engineering Kallooppara
+
+Project Description
+Jawline Adich Poyi is an IoT-based system that tracks a cow’s chewing using an MPU6050 sensor on an ESP32 and detects nearby humans with an HC-SR04 ultrasonic sensor. The data is sent to Firebase and displayed on a fun, animated web dashboard that shows the cow’s mood, plays videos, and updates live chewing stats
+
+The Problem (that doesn't exist)
+Nobody hears what a cow says when we go near it… and nobody knows its mood while chewing.
+
+The Solution (that nobody asked for)
+We attached motion and distance sensors to the cow’s head, tracked chewing patterns, streamed data to Firebase, and made a fun website to announce the cow’s mood and play cheeky videos when you approach.
+
+Technical Details
+Technologies/Components Used
+For Software:
+Languages: C++ (Arduino), HTML, CSS, JavaScript
+Libraries: FirebaseESP32, Wire.h, Chart.js, GSAP.js
+Tools: Arduino IDE, Firebase Console, Browser DevTools
+
+For Hardware:
+
+Components: ESP32, MPU6050, HC-SR04 Ultrasonic Sensor
+Specifications: MPU6050 (3-axis accel + gyro), HC-SR04 range 2–400 cm, ESP32 WiFi-enabled
+Tools: Breadboard, jumper wires, USB cable
+
+Implementation
+For Software:
+
+Installation
+git clone https://github.com/username/jawline-adich-poyi.git
+
+
+Run
+# Open index.html in your browser
+
+Project Documentation
+For Software:
+
+Screenshots (Add at least 3)
+![User interface](pics/front.png) Add caption explaining what this shows
+
+![mood showing section](pics/moodface.png) Add caption explaining what this shows
+
+![graph](pics/graphsection.png) we just forget to take screenshot of that while running.....but uploading the picture of present graph(the hardware components are distributed among its owners)
+![moodgallery](pics/moodgallery.png)
+Diagrams
+Data flow: Sensors → ESP32 → Firebase → Web Dashboard.
+Sensors capture chewing & motion → ESP32 processes & sends to Firebase → Web dashboard displays mood, videos, and stats in real time.
+
+For Hardware:
+
+Schematic & Circuit
+MPU6050
+VCC → 3.3V
+GND → GND
+SDA → GPIO 21 (SDA)
+SCL → GPIO 22 (SCL)
+
+HC-SR04 Ultrasonic
+VCC → 5V (or 3.3V if you prefer; 5V gives best range)
+GND → GND
+TRIG → GPIO 33 (digital out from ESP32)
+ECHO → Voltage divider → GPIO 32 (digital input to ESP32)
+
+Voltage divider for ECHO (if HC-SR04 powered at 5V)
+Convert ECHO 5V → 3.3V safe for ESP32:
+
+ECHO output → R1 = 2.2kΩ → node → R2 = 3.3kΩ → GND
+(Take the node between R1 and R2 to ESP32 GPIO32).
+— This divides ~5V down to ~3.0–3.2V which is safe for ESP32 input.
+Alternatively use R1 = 1.8kΩ and R2 = 3.3kΩ (≈3.3V at node).
+
+![breadboard](pics/breadboard.jpg) connected each sensors with esp32 using this
+![wire](pics/wire.jpg) connected sensors in breadboard
+![MPU6050 gyro accelometre](pics/gyro.jpg)
+![HCSR04](pic/hc.jpg)
+ 
+Build Photos
+MPU6050 module (GND / VCC / SDA / SCL)
+HC-SR04 ultrasonic sensor
+Resistors for voltage divider (2.2kΩ and 3.3kΩ) or a proper bidirectional level shifter
+Breadboard, jumper wires, USB cable, power supply (5V if using HC-SR04 at 5V)
+
+![running](pics/running.jpg) 
+
+![Final](pics/finalproject.jpg) 
+![Final](pics/finalproject1.jpg)
+Project Demo
+Video
+[explanation video](pics/finalvideo.mp4) Explain what the video demonstrates
+
+Additional Demos
+[screenrecord](pics/screenrecord.mp4)
+
+Team Contributions
+Sanjeev Santhosh – Arduino programming, Firebase integration, hardware setup.
+Neya Sabu – Web dashboard design, frontend animations, chart integration.
+Both members contributed equally to all aspects of the project.
