@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jawline Adich Poyi......</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manjari&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <h1>🐮 Jawline Adich Poyi......</h1>
+    <nav>
+      <ul>
+        <li><a href="#mood">Mood</a></li>
+        <li><a href="#reaction">Reaction</a></li>
+        <li><a href="#charts">Stats</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Chew cheyyunna Mood Detector!</h2>
+    <p>Cow + Mood + Malayalam Comedy = ❤️🐄</p>
+    <img src="vids/cowchew.gif" alt="Cow Chewing" class="cow-hero">
+  </section>
+
+  <!-- Mood Section -->
+  <section id="mood" class="mood-section">
+    <div class="mood-container">
+      <div class="mood-info">
+        <h2>🐄 Mood Tracker</h2>
+        <strong id="mood-status">Mood: Loading...</strong>
+        <p id="chew-count">Chews/min: --</p>
+        <video id="mood-video" autoplay muted loop playsinline>
+          <source src="vids/happymood.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Human Reaction -->
+  <section id="reaction" class="reaction-section">
+    <h2>😲 Human Detected!</h2>
+    <p class="reaction-text">Cow says: “ni ingott ente aduth vaa...ninne enikk ishtamaayi!”</p>
+    <video id="reaction-video" class="reaction-video hidden" autoplay muted playsinline>
+      <source src="vids/cowdialogue.mp4" type="video/mp4" />
+    </video>
+  </section>
+
+  <!-- Charts -->
+  <section id="charts" class="charts-section">
+    <h2>📈 Chewing Stats</h2>
+    <canvas id="chewChart"></canvas>
+  </section>
+
+  <!-- Mood Gallery -->
+  <section id="gallery" class="gallery-section">
+    <h2>🎬 Mood Gallery</h2>
+    <div class="gallery-grid">
+      <div>
+        <video controls>
+          <source src="vids/happymood.mp4" type="video/mp4" />
+        </video>
+        <p>Happy Cow</p>
+      </div>
+      <div>
+        <video controls>
+          <source src="vids/sadmood.mp4" type="video/mp4" />
+        </video>
+        <p>Sad Cow</p>
+      </div>
+      <div>
+        <video controls>
+          <source src="vids/neutralmood.mp4" type="video/mp4" />
+        </video>
+        <p>Neutral Cow</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Jawline Adich Poi. Created with ❤️ in Kerala</p>
+  </footer>
+
+  <!-- Main JS -->
+  <script type="module" src="app.js"></script>
+  <script type="module" src="script.js"></script>
+
+  <!-- Sound Unlocker -->
+  <script>
+    document.addEventListener('click', function enableVideoSound() {
+      const moodVideo = document.getElementById('mood-video');
+      const reactionVideo = document.getElementById('reaction-video');
+
+      [moodVideo, reactionVideo].forEach(video => {
+        if (video) {
+          video.muted = false;
+          video.currentTime = 0;
+          video.play().catch(err => console.warn('Autoplay with sound blocked:', err));
+        }
+      });
+
+      console.log("Videos unmuted after first interaction.");
+      document.removeEventListener('click', enableVideoSound);
+    });
+  </script>
+</body>
+</html>
