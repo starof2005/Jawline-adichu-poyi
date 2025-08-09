@@ -1,4 +1,5 @@
-Jawline adich poyi... 🎯
+*Jawline adich poyi... 🎯*
+
 Basic Details
 Team Name: ALEXANDREAN PHALANX
 
