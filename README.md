@@ -43,12 +43,12 @@ Project Documentation
 For Software:
 
 Screenshots (Add at least 3)
-![User interface](pics/front.png) Add caption explaining what this shows
+![User interface](vids/front1.png) Add caption explaining what this shows
 
-![mood showing section](pics/moodface.png) Add caption explaining what this shows
+![mood showing section](vids/moodface1.png) Add caption explaining what this shows
 
-![graph](pics/graphsection.png) we just forget to take screenshot of that while running.....but uploading the picture of present graph(the hardware components are distributed among its owners)
-![moodgallery](pics/moodgallery.png)
+![graph](vids/graphsection1.png) we just forget to take screenshot of that while running.....but uploading the picture of present graph(the hardware components are distributed among its owners)
+![moodgallery](vids/moodgallery1.png)
 Diagrams
 Data flow: Sensors → ESP32 → Firebase → Web Dashboard.
 Sensors capture chewing & motion → ESP32 processes & sends to Firebase → Web dashboard displays mood, videos, and stats in real time.
@@ -76,10 +76,10 @@ ECHO output → R1 = 2.2kΩ → node → R2 = 3.3kΩ → GND
 — This divides ~5V down to ~3.0–3.2V which is safe for ESP32 input.
 Alternatively use R1 = 1.8kΩ and R2 = 3.3kΩ (≈3.3V at node).
 
-![breadboard](pics/breadboard1.jpg) connected each sensors with esp32 using this
-![wire](pics/wire1.jpg) connected sensors in breadboard
-![MPU6050 gyro accelometre](pics/gyro1.jpg)
-![HCSR04](pic/hc1.jpg)
+![breadboard](vids/breadboard1.jpg) connected each sensors with esp32 using this
+![wire](vids/wire1.jpg) connected sensors in breadboard
+![MPU6050 gyro accelometre](vids/gyro1.jpg)
+![HCSR04](vids/hc1.jpg)
  
 Build Photos
 MPU6050 module (GND / VCC / SDA / SCL)
@@ -87,18 +87,18 @@ HC-SR04 ultrasonic sensor
 Resistors for voltage divider (2.2kΩ and 3.3kΩ) or a proper bidirectional level shifter
 Breadboard, jumper wires, USB cable, power supply (5V if using HC-SR04 at 5V)
 
-![running](pics/running1.jpg) 
+![running](vidss/running1.jpg) 
 
-![running](pics/runningg.jpg) 
+![running](vids/runningg.jpg) 
 
-![Final](pics/finalproject11.jpg) 
-![Final](pics/finalproject111.jpg)
+![Final](vids/finalproject11.jpg) 
+![Final](vids/finalproject111.jpg)
 Project Demo
 Video
-[explanation video](pics/finalvideo1.mp4) Explain what the video demonstrates
+[explanation video](vids/finalvideo2.mp4) Explain what the video demonstrates
 
 Additional Demos
-[screenrecord](pics/screenrecord1.mp4)
+[screenrecord](vids/screenrecord1.mp4)
 
 Team Contributions
 Sanjeev Santhosh – Arduino programming, Firebase integration, hardware setup.
