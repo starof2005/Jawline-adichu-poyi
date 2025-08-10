@@ -1,6 +1,9 @@
+<img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
+
 Project name: Jawline adich poyi... 🎯
 
 Basic Details
+
 Team Name: ALEXANDREAN PHALANX
 
 Team Members
@@ -38,7 +41,7 @@ Implementation
 For Software:
 
 Installation
-git clone https://github.com/username/jawline-adich-poyi.git
+git clone (https://github.com/starof2005/Jawline-adichu-poyi)
 
 vercel-host link:  https://jawline-adichu-poyi-pekp.vercel.app/ 
 
@@ -96,9 +99,11 @@ Breadboard, jumper wires, USB cable, power supply (5V if using HC-SR04 at 5V)
 ![running](vids/running1.jpg) 
 
 ![running](vids/runningg.jpg) 
+![dialogue](vids/cowdialogue.mp4)
 
 ![Final](vids/finalproject11.jpg) 
 ![Final](vids/finalproject111.jpg)
+![work like](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flipkart.com%2Fpedigone-cow-buffalo-mohri-mohra-strong-bhanwar-kadhi-halter-nylon-rope-cow-everyday-collar%2Fp%2Fitmd2ce7c33575a7&psig=AOvVaw2n3BTB3rlQpR3Mm5dp-tKS&ust=1754892373823000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCJC3gNnJ_44DFQAAAAAdAAAAABAE)
 Project Demo
 Video
 [explanation video](vids/finalvideo2.mp4) Explain what the video demonstrates
@@ -110,3 +115,7 @@ Team Contributions
 Sanjeev Santhosh – Arduino programming, Firebase integration, hardware setup.
 Neya Sabu – Web dashboard design, frontend animations, chart integration.
 Both members contributed equally to all aspects of the project.
+
+Made with ❤️ at TinkerHub Useless Projects
+
+Static Badge Static Badge
